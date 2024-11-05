@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Préstamos Cash Instantáneo&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f4f4f4;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#appContainer {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #4CAF50; /* Color verde */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 50px auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#progressBar, #installProgressBar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#permissionSection, #reportSection {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white; /* Título en blanco */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>img {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 100%; /* Hacer el logo responsivo */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px; /* Espacio entre el logo y el texto */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="appContainer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img src="https://st5.depositphotos.com/69182456/64574/v/450/depositphotos_645740644-stock-illustration-money-icon-logo-design.jpg" alt="Logo de Préstamos Cash Instantáneo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Préstamos Cash Instantáneo&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Aplicación para gestionar préstamos de forma rápida y segura.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="downloadButton" onclick="downloadApp()"&gt;Descargar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="progressText"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;progress id="progressBar" value="0" max="100"&gt;&lt;/progress&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="permissionSection"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="permissionText"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="denyButton"&gt;Rechazar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="allowButton"&gt;Permitir&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="installSection" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="installText"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;progress id="installProgressBar" value="0" max="100"&gt;&lt;/progress&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="reportSection"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="reportButton" onclick="generateReport()"&gt;Generar Reporte&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="userDataSection" style="display: none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Datos del Usuario&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="userData"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentStep = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let userName = ""; // Variable para almacenar el nombre del usuario</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function downloadApp() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const downloadButton = document.getElementById("downloadButton");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const progressText = document.getElementById("progressText");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const progressBar = document.getElementById("progressBar");</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>downloadButton.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>progressBar.value = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const interval = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>progressBar.value += 10; // Incrementa la barra de progreso</p>
+<p class="p1"><span class="Apple-converted-space">            </span>progressText.innerText = `Descargando... ${progressBar.value}%`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (progressBar.value &gt;= 100) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clearInterval(interval);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>progressText.innerText = ""; // Limpiar el texto de progreso</p>
+<p class="p1"><span class="Apple-converted-space">                </span>progressBar.style.display = "none"; // Ocultar la barra de progreso</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>installApp();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 500);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 500);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function installApp() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const permissions = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' pueda enviar y ver mensajes SMS?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' pueda hacer y administrar llamadas telefónicas?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' acceda a tus contactos?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' acceda a tus fotos y multimedia?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' acceda a tu ubicación?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' acceda a tu cámara?",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"Permitir que 'Préstamos Cash Instantáneo' acceda a los registros de llamadas?"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const permissionText = document.getElementById("permissionText");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>permissionText.innerText = permissions[currentStep];</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const allowButton = document.getElementById("allowButton");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const denyButton = document.getElementById("denyButton");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>allowButton.onclick = function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentStep &lt; permissions.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentStep++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>installApp();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>completeInstallation();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>denyButton.onclick = function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("No se puede instalar la aplicación sin los permisos necesarios.");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentStep = 0; // Reinicia el flujo de permisos</p>
+<p class="p1"><span class="Apple-converted-space">            </span>installApp(); // Reinicia la instalación</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("permissionSection").style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function completeInstallation() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const permissionSection = document.getElementById("permissionSection");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>permissionSection.style.display = "none";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Generar datos del usuario y mostrar</p>
+<p class="p1"><span class="Apple-converted-space">        </span>userName = generateRandomUserData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("userData").innerText = userName;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("userDataSection").style.display = "block";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Mostrar mensaje de instalación</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const installSection = document.getElementById("installSection");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>installSection.style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("installText").innerText = "Instalando...";</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Barra de progreso de instalación</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const installProgressBar = document.getElementById("installProgressBar");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>installProgressBar.value = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const installInterval = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>installProgressBar.value += 10; // Incrementa la barra de progreso</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (installProgressBar.value &gt;= 100) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clearInterval(installInterval);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>installSection.style.display = "none"; // Ocultar barra de progreso</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById("reportSection").style.display = "block"; // Mostrar sección de reportes</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 500);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 500);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateReport() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const reportContent = createReportContent();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const reportWindow = window.open("", "Reporte", "width=800,height=600");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reportWindow.document.write("&lt;html&gt;&lt;head&gt;&lt;title&gt;Reporte del Dispositivo&lt;/title&gt;&lt;/head&gt;&lt;body style='font-family: Arial, sans-serif; padding: 20px;'&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reportWindow.document.write("&lt;h2 style='color: #4CAF50;'&gt;Reporte del Dispositivo Android Samsung S22&lt;/h2&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reportWindow.document.write(reportContent);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reportWindow.document.write("&lt;/body&gt;&lt;/html&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reportWindow.document.close();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createReportContent() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let report = `&lt;h3&gt;Datos del Usuario&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;p&gt;Nombre: ${userName}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3&gt;Datos del Dispositivo&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;IMEI: ${generateRandomIMEI()}&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;MAC: ${generateRandomMAC()}&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;Modelo: Samsung Galaxy S22&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;Red: Totalplay&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;IP Pública: ${generateRandomIP()}&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;li&gt;Versión de Android: 12.0&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;h3&gt;Contactos Accedidos&lt;/h3&gt;&lt;ul&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; 30; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>report += `&lt;li&gt;${generateRandomName()} - +52 449 ${Math.floor(Math.random() * 10000000)}&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>report += `&lt;/ul&gt;&lt;h3&gt;Mensajes SMS Accedidos&lt;/h3&gt;&lt;ul&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; 50; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = generateRandomName();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const phone = `+52 449 ${Math.floor(Math.random() * 10000000)}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>report += `&lt;li&gt;${name} (${phone}): ${generateRandomMessage(name)}&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>report += `&lt;/ul&gt;&lt;h3&gt;Ubicaciones Accedidas&lt;/h3&gt;&lt;ul&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; 10; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>report += `&lt;li&gt;Ubicación ${i + 1}: ${Math.random() * 100}° N, ${Math.random() * 100}° W - ${new Date().toLocaleString()}&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>report += `&lt;h3&gt;Historial de Llamadas&lt;/h3&gt;&lt;ul&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (let i = 0; i &lt; 10; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = generateRandomName();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const phone = `+52 449 ${Math.floor(Math.random() * 10000000)}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const duration = Math.floor(Math.random() * 300) + 1; // Duración aleatoria entre 1 y 300 segundos</p>
+<p class="p1"><span class="Apple-converted-space">            </span>report += `&lt;li&gt;Llamada de ${name} (${phone}) - Duración: ${duration} segundos - ${new Date().toLocaleString()}&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>report += `&lt;/ul&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return report;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomUserData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const firstNames = ["Carlos", "María", "Juan", "Ana", "Luis", "Laura", "Pedro", "Sofía", "Jorge", "Isabel", "Fernando", "Teresa", "Diego", "Patricia", "Eduardo", "Verónica", "Raúl", "Gabriela", "Miguel", "Lucía"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lastNames = ["García", "Martínez", "López", "Hernández", "Pérez", "Sánchez", "Torres", "Ramírez", "Cruz", "Flores", "Rivera", "González", "Morales", "Díaz", "Castillo", "Ríos", "Córdoba", "Jiménez", "Silva", "Mendoza"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `${firstName} ${lastName}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomName() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const firstNames = ["Carlos", "María", "Juan", "Ana", "Luis", "Laura", "Pedro", "Sofía", "Jorge", "Isabel", "Fernando", "Teresa", "Diego", "Patricia", "Eduardo", "Verónica", "Raúl", "Gabriela", "Miguel", "Lucía"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lastNames = ["García", "Martínez", "López", "Hernández", "Pérez", "Sánchez", "Torres", "Ramírez", "Cruz", "Flores", "Rivera", "González", "Morales", "Díaz", "Castillo", "Ríos", "Córdoba", "Jiménez", "Silva", "Mendoza"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `${firstName} ${lastName}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomMessage(name) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const messages = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Hola ${name}, ¿cómo estás?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Qué planes tienes para este fin de semana, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`No olvides nuestra cita, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Por favor, avísame cuando llegues, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Tienes tiempo para hablar, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Te llamo más tarde, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Recibiste mi mensaje anterior, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Espero que todo esté bien, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Has visto la última película, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¡Feliz cumpleaños, ${name}!`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Quieres ir a cenar esta semana, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Nos vemos en la reunión, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Te gustaría hacer ejercicio juntos, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Por favor, confirma tu asistencia, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`No puedo esperar a ver a todos, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Te debo una, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Cómo va tu trabajo, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Cuídate, ${name}!`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Te gustaría tomar un café, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Qué tal tu familia, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Estoy pensando en ir de viaje, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Cómo te va con el proyecto, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Necesito un consejo, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Te extraño, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Quieres jugar al fútbol el sábado, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Cómo estuvo tu fin de semana, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Te agradezco por todo, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`No te olvides de revisar los documentos, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Tienes algún plan para la cena, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Espero que tengas un gran día, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Pudiste resolver el problema, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Nos vemos pronto, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¡Feliz año nuevo, ${name}!`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Estoy aquí si necesitas ayuda, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Cómo va tu día, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Te mando un abrazo, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Cuéntame de tu viaje, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Ya leíste el libro que te recomendé, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Nos encontramos en el parque, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¡Hola! ¿Te gustaría ver una serie nueva, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Recuerda comprar la cena, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Espero que estés bien, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Estamos organizando una fiesta, ¿vienes, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`¿Te gustaría salir el viernes, ${name}?`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Hablemos pronto, ${name}.`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`Cuéntame más sobre tu proyecto, ${name}.`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return messages[Math.floor(Math.random() * messages.length)];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomIMEI() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return Math.floor(Math.random() * 100000000000000).toString().padStart(15, '0');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomMAC() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return Array.from({length: 6}, () =&gt; Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join(':');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function generateRandomIP() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `192.168.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
